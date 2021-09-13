@@ -1,0 +1,2 @@
+rootProject.name = "KBsoft"
+include ':app'

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChallengeMainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/teal_700"
+        android:background="@color/design_default_color_background"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/btn_friendrank"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_people_24"/>
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="match_parent"/>
+        <ImageButton
+            android:id="@+id/btn_mainpage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_message_24"/>
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="match_parent"/>
+        <ImageButton
+            android:id="@+id/btn_starpage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_star_24"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="200dp"
+            android:textSize="24dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="Challenge Search"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="350dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="검색어를 입력하세요." />
+
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_challenge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="5dp"
+        android:scrollbars="vertical"/>
+
+</LinearLayout>
