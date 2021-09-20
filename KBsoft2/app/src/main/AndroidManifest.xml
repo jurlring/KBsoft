@@ -19,7 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mainpage.main.Challenge_RankMainActivity"></activity>
+        <activity android:name=".mainpage.main.Challenge_RankMainActivity"/>
+        <activity android:name=".mainpage.main.Challenge_GalleryMainActivity"></activity>
+
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@ public class ChallengeItem {
     public String num;
 
     public ChallengeItem(String challenge, String num) {
-        Challenge = challenge;
+        this.Challenge = challenge;
         this.num = num;
     }
 

@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kbsoft.mainpage.main.ChallengeAdapter;
 import com.example.kbsoft.mainpage.main.ChallengeItem;
+import com.example.kbsoft.mainpage.main.Challenge_GalleryMainActivity;
 import com.example.kbsoft.mainpage.main.Challenge_RankMainActivity;
 import com.example.kbsoft.mainpage.main.PhotoCallbackListener;
 
@@ -44,7 +45,7 @@ public class ChallengeMainActivity extends AppCompatActivity {
     private PhotoCallbackListener photoCallbackListener=new PhotoCallbackListener() {
         @Override
         public void callBack(int set,int pos) {
-            if (set == 0) {
+            if (set == 0) {//사진 추가하기
                 if (pos >= 0 && pos <= 6) {
                     TedBottomPicker bottomSheetDialogFragment = new TedBottomPicker.Builder(ChallengeMainActivity.this)
                             .setOnImageSelectedListener(new TedBottomPicker.OnImageSelectedListener() {
@@ -59,16 +60,18 @@ public class ChallengeMainActivity extends AppCompatActivity {
                     bottomSheetDialogFragment.show(getSupportFragmentManager());
                 }
             }
-            else if (set==1){
+            else if (set==1){//랭크로 이동하기
                 Intent Intent = new Intent(ChallengeMainActivity.this, Challenge_RankMainActivity.class);
                 Intent.putExtra("Challenge_Name",challengeItems.get(pos).getChallenge());
                 Toast.makeText(ChallengeMainActivity.this, "챌린지 랭크로 이동", Toast.LENGTH_SHORT).show();
                 startActivity(Intent);
             }
-            else if (set==2){
-                //Intent menuIntent = new Intent(Challenge_RankMainActivity.this, ChallengeMainActivity.class);
-                //Toast.makeText(Challenge_RankMainActivity.this, "앨범 전체보기 클릭", Toast.LENGTH_SHORT).show();
-                //startActivity(menuIntent);
+            else if (set==2){//갤러리 보기
+                Intent Intent = new Intent(ChallengeMainActivity.this, Challenge_GalleryMainActivity.class);
+                Intent.putExtra("Challenge_Name",challengeItems.get(pos).getChallenge());
+                Intent.putExtra("Challenge_Number",pos);
+                Toast.makeText(ChallengeMainActivity.this, "챌린지 갤러리로 이동", Toast.LENGTH_SHORT).show();
+                startActivity(Intent);
 
             }
         }
@@ -89,14 +92,14 @@ public class ChallengeMainActivity extends AppCompatActivity {
 
         challengeItems=new ArrayList<>();
         searchItems=new ArrayList<>();
-        search=(EditText)findViewById(R.id.search_main);
-        friendrank=(ImageButton)findViewById(R.id.btn_friendrank_main);
-        mainpage=(ImageButton)findViewById(R.id.btn_mainpage_main);
-        starpage=(ImageButton)findViewById(R.id.btn_starpage_main);
+        search=findViewById(R.id.search_main);
+        friendrank=findViewById(R.id.btn_friendrank_main);
+        mainpage=findViewById(R.id.btn_mainpage_main);
+        starpage=findViewById(R.id.btn_starpage_main);
 
         createData();
 
-        RecyclerView recyclerView=(RecyclerView)findViewById(R.id.recycler_challenge);
+        RecyclerView recyclerView=findViewById(R.id.recycler_challenge);
         recyclerView.setHasFixedSize(true);
         challengeAdapter=new ChallengeAdapter(this,challengeItems);
         challengeAdapter.setPhotoCallbackListener(photoCallbackListener);

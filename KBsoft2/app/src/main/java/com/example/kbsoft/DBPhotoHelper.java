@@ -1,4 +1,5 @@
 package com.example.kbsoft;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -18,7 +19,7 @@ public class DBPhotoHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String qry="CREATE TABLE photo(num INTEGER PRIMARY KEY AUTOINCREMENT,user VARCHAR(40) NOT NULL,challenge INTEGER NOT NULL, date TEXT,uri TEXT NOT NULL)";
+        String qry="CREATE TABLE photo(num INTEGER PRIMARY KEY AUTOINCREMENT,user VARCHAR(40) NOT NULL,challenge INTEGER NOT NULL,uri TEXT NOT NULL)";
         db.execSQL(qry);
     }
 
@@ -31,10 +32,14 @@ public class DBPhotoHelper extends SQLiteOpenHelper {
 
     public void insertPhoto(int pos,String uri) {
         SQLiteDatabase db=getWritableDatabase();
-        String date = DateFormat.getDateInstance().format(new Date());
-        String qry="INSERT INTO photo(user,challenge,date,uri) VALUES(jurl,"+pos+","+date+","+uri+")";
-
+        String qry="INSERT INTO photo(user,challenge,uri) VALUES('jurl','"+pos+"','"+uri+"')";
         db.execSQL(qry);
+        db.close();
+    }
+
+    public void deletePhoto(long uid) {
+        SQLiteDatabase db=getReadableDatabase();
+        db.execSQL("DELETE FROM photo WHERE num="+uid);
         db.close();
     }
 }
